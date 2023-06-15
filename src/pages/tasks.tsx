@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useRef } from 'react';
 import {useTaskManager} from "@/store/useTaskManager";
+import {useLocalStorage} from "@/hooks/useLocalStorage";
 
 export interface Task {
   id: number,
@@ -18,6 +19,7 @@ const TaskManager = () => {
     setSearchTask,
   } = useTaskManager();
 
+  useLocalStorage(tasks);
   const handleAddTask = () => {
     if(createTaskRef.current) {
       const title = createTaskRef.current.value;
